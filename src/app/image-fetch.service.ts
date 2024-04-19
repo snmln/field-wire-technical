@@ -17,12 +17,7 @@ export class imageService {
       "Authorization",
       "Client-ID 0a9df8956ed166a"
     );
-    console.log('from getGallery', searchTerm)
-    return this.http.get<any[]>(`${this.apiUrl}/search/?q=${searchTerm}`, { headers: header });
-  }
-  setSearchTerm(value: string): void {
-    console.log('from setSearchTerm', value)
 
-    this.getGallery(value);
+    return this.http.get<any[]>(`${this.apiUrl}/search/?q=${searchTerm}`, { headers: header });
   }
 }
