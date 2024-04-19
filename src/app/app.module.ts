@@ -8,12 +8,14 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { ImageGalleryComponent } from './image-gallery/image-gallery.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { ImageComponent } from './image/image.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
-    ImageGalleryComponent
+    ImageGalleryComponent,
+    ImageComponent
   ],
   imports: [
     BrowserModule,
