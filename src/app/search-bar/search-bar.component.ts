@@ -19,16 +19,11 @@ export class SearchBarComponent implements DoCheck {
     this.modelChanged.pipe(debounceTime(300)).subscribe(() => {
       console.log(this.myModel)
       this.searchResult$ = this.searchService.getGallery(this.myModel);
+      console.log(this.searchResult$)
     });
   }
   SearchSubmit(newValue: any) {
-    console.log('from SearchSubmit', newValue)
-    // this.searchService.searchTerm = newValue;
-    // console.log('from searchTerm', this.searchService.searchTerm)
-    this.modelChanged.next('newValue');
-
-    // this.searchService.setSearchTerm(newValue)
-
+    this.modelChanged.next(newValue);
   }
   ngDoCheck() {
     console.log('check run');
