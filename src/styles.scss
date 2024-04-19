@@ -2,3 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+$desktopMargin: 6rem;
+body {
+  margin-left: $desktopMargin;
+  margin-right: $desktopMargin;
+}

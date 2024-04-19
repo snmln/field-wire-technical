@@ -1,1 +1,28 @@
-<div></div>
+<div class="rounded-lg w-72	h-72 relative ">
+    <button (click)="onClick($event)" class="rounded-lg" data-dialog-target="image-dialog" Open large modal>
+        <img ngSrc="https://i.imgur.com/WGfJiMm.png" class="rounded-lg object-cover" fill />
+    </button>
+</div>
+<div class="rounded-lg w-72	h-72 relative ">
+    <button (click)="onClick($event)" class="rounded-lg" data-dialog-target="image-dialog" Open large modal>
+        <img ngSrc="https://placehold.co/600x400/png" class="rounded-lg object-cover" fill />
+    </button>
+</div>
+
+<div *ngIf="showModal"
+    class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
+    (click)="toggleModal()">
+    <div class="relative w-full h-dvh py-6 mx-auto max-w-6xl">
+        <!--content-->
+        <div
+            class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none h-full">
+
+            <img ngSrc={{imgSrc}} class="object-cover" fill />
+
+            <div class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>

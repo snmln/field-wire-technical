@@ -13,17 +13,19 @@ import { Subject, Observable } from "rxjs";
 export class SearchBarComponent implements DoCheck {
   myModel: string;
   modelChanged = new Subject<string>();
-  searchResult$: Observable<any[]>;
+  searchResult$: any[];
 
   constructor(private searchService: imageService) {
-    this.modelChanged.pipe(debounceTime(300)).subscribe(() => {
-      console.log(this.myModel)
-      this.searchResult$ = this.searchService.getGallery(this.myModel);
-      console.log(this.searchResult$)
+    this.modelChanged.pipe(debounceTime(300)).subscribe((data) => {
+
+      this.searchService.getGallery(this.myModel).subscribe((data) => {
+        console.log('data', data);
+      })
     });
   }
   SearchSubmit(newValue: any) {
     this.modelChanged.next(newValue);
+
   }
   ngDoCheck() {
     console.log('check run');

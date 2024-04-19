@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class ImageComponent {
 
+  imgSrc: string;
+  showModal = false;
+
+  onClick(event: any) {
+    const imgElem = event.target;
+    var target = event.target || event.srcElement || event.currentTarget;
+    var srcAttr = target.attributes.src;
+    this.toggleModal();
+    this.imgSrc = srcAttr.nodeValue;
+  }
+
+  toggleModal() {
+    this.showModal = !this.showModal;
+  }
+
 }
