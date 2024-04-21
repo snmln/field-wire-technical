@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -9,21 +9,32 @@ import { map } from 'rxjs/operators';
 export class imageService {
 
   apiUrl = 'https://api.imgur.com/3/gallery/search/';
-  images: any[] = [];
+  public imagesSource = new BehaviorSubject<any>('heelo');
+
+  currentImages = this.imagesSource.asObservable()
+
   constructor(private http: HttpClient) { }
 
-  setImages(images: any[]) {
-    this.images = images;
+  setImages(images: any) {
+
+    this.imagesSource.next(images);
   }
+
+  getImages() {
+return this.imagesSource;
+  }
+
   getGallery(searchTerm: string) {
     let header = new HttpHeaders().set(
       "Authorization",
       "Client-ID 0a9df8956ed166a"
     );
-    return this.http.get<any[]>(`${this.apiUrl}/search/?q=${searchTerm}`, { headers: header })
-      // .pipe(map((response: any) => response.json()));
-      ;
+    
+    return this.http.get<any>(`${this.apiUrl}/search/?q=${searchTerm}`, { headers: header }).subscribe(results =>{
+
+
+      this.imagesSource.next(results);
+
+    })
   }
-
-
 }

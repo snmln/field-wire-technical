@@ -16,11 +16,8 @@ export class SearchBarComponent implements DoCheck {
   searchResult$: any[];
 
   constructor(private searchService: imageService) {
-    this.modelChanged.pipe(debounceTime(300)).subscribe((data) => {
-
-      this.searchService.getGallery(this.myModel).subscribe((data) => {
-        console.log('data', data);
-      })
+    this.modelChanged.pipe(debounceTime(300)).subscribe(() => {
+      this.searchService.getGallery(this.myModel)
     });
   }
   SearchSubmit(newValue: any) {
