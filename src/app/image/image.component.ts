@@ -6,21 +6,23 @@ import { imageService } from '../image-fetch.service';
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.scss']
 })
-export class ImageComponent implements OnInit{
+export class ImageComponent implements OnInit {
   images: any;
   imgSrc: string;
   showModal = false;
-  constructor(public imageService: imageService){
+  constructor(public imageService: imageService) {
 
   }
 
-  ngOnInit(){
-    this.imageService.currentImages.subscribe(newImages => {this.images = newImages
-      console.log('newImages', newImages)}
+  ngOnInit() {
+    this.imageService.currentImages.subscribe(newImages => {
+      this.images = newImages
+      console.log('newImages', newImages)
+    }
     );
 
   }
- 
+
 
   onClick(event: any) {
     const imgElem = event.target;

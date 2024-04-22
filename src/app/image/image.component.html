@@ -1,10 +1,15 @@
 <div class="flex flex-wrap	">
-<div class="rounded-lg w-72	h-72 relative m-6" *ngFor="let image of images.data">
-    <button (click)="onClick($event)" class="rounded-lg" data-dialog-target="image-dialog" Open large modal>
-        <img ngSrc={{image.images[0].link}} class="rounded-lg object-cover" fill />
-    </button>
+    <div class="rounded-lg w-72	h-72 relative m-6" *ngFor="let image of images.data">
+        <button (click)="onClick($event)" class="rounded-lg" data-dialog-target="image-dialog" Open large modal>
+            <img ngSrc={{image.images[0].link}} class="rounded-lg object-cover" fill
+                onerror="this.parentNode.parentNode.style.display='none'" />
+        </button>
+    </div>
+
 </div>
-</div>
+
+
+
 <div *ngIf="showModal"
     class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
     (click)="toggleModal()">
